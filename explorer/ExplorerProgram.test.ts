@@ -14,14 +14,14 @@ const tableSlugKeyword = GrapherGrammar.tableSlug.keyword
 
 describe(ExplorerProgram, () => {
     const testProgram = `${ExplorerGrammar.graphers.keyword}
-    ${grapherIdKeyword}    Examples Radio    title    subtitle    ${tableSlugKeyword}    type    ySlugs    hasMapTab
-    35    Load A Grapher Demo
-        Create A Grapher Demo    Hello world    This is a subtitle    demo    DiscreteBar    gdp    true
-        Data from CSV Demo    Healthy Life Expectancy        lifeExpectancy    LineChart    Healthy-Life-Expectancy-IHME`
+\t${grapherIdKeyword}\tExamples Radio\ttitle\tsubtitle\t${tableSlugKeyword}\ttype\tySlugs\thasMapTab
+\t35\tLoad A Grapher Demo
+\t\tCreate A Grapher Demo\tHello world\tThis is a subtitle\tdemo\tDiscreteBar\tgdp\ttrue
+\t\tData from CSV Demo\tHealthy Life Expectancy\t\tlifeExpectancy\tLineChart\tHealthy-Life-Expectancy-IHME`
     const program = new ExplorerProgram("test", testProgram)
 
     it("gets code", () => {
-        expect(program.decisionMatrixCode).toContain(grapherIdKeyword)
+        expect(program.decisionMatrixCode).toContain("title")
     })
 
     it("allows blank lines in blocks", () => {
