@@ -30,7 +30,6 @@ export const ExplorerPage = (props: ExplorerPageSettings) => {
         explorerTitle,
         slug,
         thumbnail,
-        hideAlertBanner,
     } = program
     const subNav = subNavId ? (
         <SiteSubnavigation
@@ -59,10 +58,7 @@ window.Explorer.renderSingleExplorerOnExplorerPage(explorerProgram, urlMigration
                 <IFrameDetector />
             </Head>
             <body className={GRAPHER_PAGE_BODY_CLASS}>
-                <SiteHeader
-                    baseUrl={baseUrl}
-                    hideAlertBanner={hideAlertBanner || false}
-                />
+                <SiteHeader baseUrl={baseUrl} />
                 {subNav}
                 <main id={ExplorerContainerId}>
                     <LoadingIndicator />

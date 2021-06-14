@@ -13,7 +13,6 @@ import { runFeedbackPage } from "./Feedback"
 import { runDonateForm } from "./stripe/DonateForm"
 import { runVariableCountryPage } from "./runVariableCountryPage"
 import { runCountryProfilePage } from "./runCountryProfilePage"
-import { runCookiePreferencesManager } from "./CookiePreferencesManager"
 import { runBlocks } from "./blocks"
 import { runTableOfContents } from "./TableOfContents"
 import { runRelatedCharts } from "./blocks/RelatedCharts"
@@ -24,10 +23,7 @@ import { hydrateGlobalEntityControlIfAny } from "../grapher/controls/globalEntit
 import { runFootnotes } from "./Footnote"
 import { Explorer } from "../explorer/Explorer"
 import { BAKED_BASE_URL, ENV } from "../settings/clientSettings"
-import {
-    CookieKey,
-    GRAPHER_PAGE_BODY_CLASS,
-} from "../grapher/core/GrapherConstants"
+import { GRAPHER_PAGE_BODY_CLASS } from "../grapher/core/GrapherConstants"
 import { Grapher } from "../grapher/core/Grapher"
 import { MultiEmbedderSingleton } from "../site/multiembedder/MultiEmbedder"
 import { CoreTable } from "../coreTable/CoreTable"
@@ -53,7 +49,6 @@ window.runSiteFooterScripts = () => {
     runBlocks()
     runLightbox()
     runSiteTools()
-    runCookiePreferencesManager()
     runCovid()
     runFootnotes()
     if (!document.querySelector(`.${GRAPHER_PAGE_BODY_CLASS}`)) {
@@ -66,15 +61,6 @@ const analytics = new SiteAnalytics(ENV)
 analytics.logPageLoad()
 
 document.querySelector("html")?.classList.add("js")
-
-if (
-    document.cookie.includes("wordpress") ||
-    document.cookie.includes("wp-settings") ||
-    document.cookie.includes(CookieKey.isAdmin)
-) {
-    const adminbar = document.getElementById("wpadminbar")
-    if (adminbar) adminbar.style.display = ""
-}
 
 new SmoothScroll('a[href*="#"][data-smooth-scroll]', {
     speed: 600,

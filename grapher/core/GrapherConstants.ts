@@ -17,10 +17,6 @@ export const GRAPHER_PAGE_BODY_CLASS = "StandaloneGrapherOrExplorerPage"
 
 export const GRAPHER_IS_IN_IFRAME_CLASS = "IsInIframe"
 
-export enum CookieKey {
-    isAdmin = "isAdmin",
-}
-
 // We currently have the notion of "modes", where you can either select 1 entity, or select multiple entities, or not change the selection at all.
 // Todo: can we remove?
 export enum EntitySelectionMode {

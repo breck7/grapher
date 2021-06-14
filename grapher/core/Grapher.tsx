@@ -42,7 +42,6 @@ import {
     ScatterPointLabelStrategy,
     RelatedQuestionsConfig,
     BASE_FONT_SIZE,
-    CookieKey,
     FacetStrategy,
     ThereWasAProblemLoadingThisChart,
     SeriesColorMap,
@@ -51,7 +50,6 @@ import {
     LegacyChartDimensionInterface,
     LegacyVariablesAndEntityKey,
 } from "./LegacyVariableCode"
-import * as Cookies from "js-cookie"
 import {
     ChartDimension,
     LegacyDimensionsManager,
