@@ -12,7 +12,6 @@ import {
 import { Explorer, ExplorerProps } from "../../explorer/Explorer"
 import {
     EMBEDDED_EXPLORER_DELIMITER,
-    EMBEDDED_EXPLORER_GRAPHER_CONFIGS,
     EXPLORER_EMBEDDED_FIGURE_SELECTOR,
 } from "../../explorer/ExplorerConstants"
 import { GLOBAL_ENTITY_CONTROL_DATA_ATTR } from "../../grapher/controls/globalEntityControl/GlobalEntityControlConstants"
@@ -48,10 +47,6 @@ class EmbeddedFigure {
             const props: ExplorerProps = {
                 ...common,
                 ...deserializeJSONFromHTML(html, EMBEDDED_EXPLORER_DELIMITER),
-                grapherConfigs: deserializeJSONFromHTML(
-                    html,
-                    EMBEDDED_EXPLORER_GRAPHER_CONFIGS
-                ),
                 uriEncodedPatch: patchParam,
             }
             ReactDOM.render(<Explorer {...props} />, this.container)

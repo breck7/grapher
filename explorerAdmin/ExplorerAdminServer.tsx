@@ -2,7 +2,6 @@ import React from "react"
 import { existsSync, readdir, writeFile, mkdirp, readFile } from "fs-extra"
 import path from "path"
 import { queryMysql } from "../db/db"
-import { getBlockContent } from "../db/wpdb"
 import {
     EXPLORER_FILE_SUFFIX,
     ExplorerProgram,
@@ -163,36 +162,11 @@ export class ExplorerAdminServer {
         program: ExplorerProgram,
         urlMigrationSpec?: ExplorerPageUrlMigrationSpec
     ) {
-        const { requiredGrapherIds } = program.decisionMatrix
-        let grapherConfigRows: any[] = []
-        if (requiredGrapherIds.length)
-            grapherConfigRows = await queryMysql(
-                `SELECT id, config FROM charts WHERE id IN (?)`,
-                [requiredGrapherIds]
-            )
-
-        const wpContent = program.wpBlockId
-            ? await getBlockContent(program.wpBlockId)
-            : undefined
-
-        const grapherConfigs: GrapherInterface[] = grapherConfigRows.map(
-            (row) => {
-                const config: GrapherProgrammaticInterface = JSON.parse(
-                    row.config
-                )
-                config.id = row.id // Ensure each grapher has an id
-                config.manuallyProvideData = true
-                return new Grapher(config).toObject()
-            }
-        )
-
         return (
             `<!doctype html>` +
             ReactDOMServer.renderToStaticMarkup(
                 <ExplorerPage
-                    grapherConfigs={grapherConfigs}
                     program={program}
-                    wpContent={wpContent}
                     baseUrl={this.baseUrl}
                     urlMigrationSpec={urlMigrationSpec}
                 />

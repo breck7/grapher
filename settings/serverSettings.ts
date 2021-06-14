@@ -26,8 +26,6 @@ export const ADMIN_BASE_URL =
 export const WORDPRESS_URL =
     localOverrides.WORDPRESS_URL ?? "https://owid.cloud"
 
-export const ALGOLIA_ID = localOverrides.ALGOLIA_ID ?? ""
-
 export const RECAPTCHA_SITE_KEY =
     localOverrides.RECAPTCHA_SITE_KEY ??
     "6LcJl5YUAAAAAATQ6F4vl9dAWRZeKPBm15MAZj4Q"

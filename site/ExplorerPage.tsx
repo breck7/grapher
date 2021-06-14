@@ -7,7 +7,6 @@ import { IFrameDetector } from "../site/IframeDetector"
 import { SiteSubnavigation } from "../site/SiteSubnavigation"
 import { formatReusableBlock } from "../site/formatting"
 import {
-    EMBEDDED_EXPLORER_GRAPHER_CONFIGS,
     EMBEDDED_EXPLORER_DELIMITER,
     ExplorerContainerId,
 } from "../explorer/ExplorerConstants"
@@ -19,41 +18,12 @@ import { ExplorerPageUrlMigrationSpec } from "../explorer/urlMigrations/Explorer
 
 interface ExplorerPageSettings {
     program: ExplorerProgram
-    wpContent?: string
-    grapherConfigs: GrapherInterface[]
     baseUrl: string
     urlMigrationSpec?: ExplorerPageUrlMigrationSpec
 }
 
-const ExplorerContent = ({ content }: { content: string }) => {
-    return (
-        <div className="explorerContentContainer">
-            <div className="sidebar"></div>
-            <div className="article-content">
-                <section>
-                    <div className="wp-block-columns is-style-sticky-right">
-                        <div
-                            className="wp-block-column"
-                            dangerouslySetInnerHTML={{
-                                __html: formatReusableBlock(content),
-                            }}
-                        ></div>
-                        <div className="wp-block-column"></div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    )
-}
-
 export const ExplorerPage = (props: ExplorerPageSettings) => {
-    const {
-        wpContent,
-        program,
-        grapherConfigs,
-        baseUrl,
-        urlMigrationSpec,
-    } = props
+    const { program, baseUrl, urlMigrationSpec } = props
     const {
         subNavId,
         subNavCurrentId,
@@ -73,14 +43,10 @@ export const ExplorerPage = (props: ExplorerPageSettings) => {
         program.toJson(),
         EMBEDDED_EXPLORER_DELIMITER
     )};
-const grapherConfigs = ${serializeJSONForHTML(
-        grapherConfigs,
-        EMBEDDED_EXPLORER_GRAPHER_CONFIGS
-    )};
 const urlMigrationSpec = ${
         urlMigrationSpec ? JSON.stringify(urlMigrationSpec) : "undefined"
     };
-window.Explorer.renderSingleExplorerOnExplorerPage(explorerProgram, grapherConfigs, urlMigrationSpec);`
+window.Explorer.renderSingleExplorerOnExplorerPage(explorerProgram, urlMigrationSpec);`
 
     return (
         <html>
@@ -101,7 +67,6 @@ window.Explorer.renderSingleExplorerOnExplorerPage(explorerProgram, grapherConfi
                 <main id={ExplorerContainerId}>
                     <LoadingIndicator />
                 </main>
-                {wpContent && <ExplorerContent content={wpContent} />}
                 <SiteFooter baseUrl={baseUrl} />
                 <script dangerouslySetInnerHTML={{ __html: inlineJs }} />
             </body>

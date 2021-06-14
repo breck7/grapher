@@ -215,7 +215,6 @@ yarn testPrettierAll`
             createSettingsSoftlinks: `ln -sf ${finalDataDir}/serverSettings.json ${rsyncTargetDirTmp}/serverSettings.json && ln -sf ${finalDataDir}/clientSettings.json ${rsyncTargetDirTmp}/clientSettings.json`,
             yarn: `cd ${rsyncTargetDirTmp} && yarn install --production --frozen-lockfile`,
             webpack: `cd ${rsyncTargetDirTmp} && yarn buildWebpack`,
-            algolia: `cd ${rsyncTargetDirTmp} && node itsJustJavascript/baker/algolia/configureAlgolia.js`,
             createQueueFile: `cd ${rsyncTargetDirTmp} && touch .queue && chmod 0666 .queue`,
             swapFolders: `rm -rf ${oldRepoBackupDir} && mv ${finalTargetDir} ${oldRepoBackupDir} || true && mv ${rsyncTargetDirTmp} ${finalTargetDir}`,
             restartAdminServer: `pm2 restart ${target}`,

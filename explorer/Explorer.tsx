@@ -64,7 +64,6 @@ import { setWindowUrl, Url } from "../urls/Url"
 import { ExplorerPageUrlMigrationSpec } from "./urlMigrations/ExplorerPageUrlMigrationSpec"
 
 export interface ExplorerProps extends SerializedGridProgram {
-    grapherConfigs?: GrapherInterface[]
     uriEncodedPatch?: string
     isEmbeddedInAnOwidPage?: boolean
     isInStandalonePage?: boolean
@@ -107,12 +106,10 @@ export class Explorer
     // caution: do a ctrl+f to find untyped usages
     static renderSingleExplorerOnExplorerPage(
         program: ExplorerProps,
-        grapherConfigs: GrapherInterface[],
         urlMigrationSpec?: ExplorerPageUrlMigrationSpec
     ) {
         const props: ExplorerProps = {
             ...program,
-            grapherConfigs,
             isEmbeddedInAnOwidPage: false,
             isInStandalonePage: true,
         }
@@ -175,13 +172,6 @@ export class Explorer
         this.explorerProgram.entityType
     )
 
-    @computed get grapherConfigs() {
-        const arr = this.props.grapherConfigs || []
-        const grapherConfigsMap: Map<number, GrapherInterface> = new Map()
-        arr.forEach((config) => grapherConfigsMap.set(config.id!, config))
-        return grapherConfigsMap
-    }
-
     @observable.ref grapher?: Grapher
 
     @action.bound setGrapher(grapher: Grapher) {
@@ -230,49 +220,16 @@ export class Explorer
         if (!this.grapher) return // todo: can we remove this?
         this.initSlideshow()
 
-        const newGrapherId = this.explorerProgram.grapherConfig.grapherId
-        const oldGrapherId = this.grapher.id
-        const newGrapherHasId = newGrapherId && isNotErrorValue(newGrapherId)
-        if (newGrapherHasId && oldGrapherId === newGrapherId) return
-
-        const oldGrapherQueryParams =
-            oldGrapherId !== undefined ? this.grapher.changedParams : undefined
-
-        if (oldGrapherId && oldGrapherQueryParams)
-            this.persistedQueryParamsByGrapher.set(
-                oldGrapherId,
-                oldGrapherQueryParams
-            )
-
-        const paramsToRestore = newGrapherId
-            ? this.persistedQueryParamsByGrapher.get(newGrapherId)
-            : undefined
-
         this.updateGrapherFromExplorer()
-
-        if (paramsToRestore)
-            this.grapher.populateFromQueryParams(paramsToRestore)
     }
 
     @action.bound updateGrapherFromExplorer() {
         const grapher = this.grapher
         if (!grapher) return
         const grapherConfigFromExplorer = this.explorerProgram.grapherConfig
-        const {
-            grapherId,
-            tableSlug,
-            yScaleToggle,
-            yAxisMin,
-        } = grapherConfigFromExplorer
-
-        const hasGrapherId = grapherId && isNotErrorValue(grapherId)
-
-        const grapherConfig = hasGrapherId
-            ? this.grapherConfigs.get(grapherId!) ?? {}
-            : {}
+        const { tableSlug, yScaleToggle, yAxisMin } = grapherConfigFromExplorer
 
         const config: GrapherProgrammaticInterface = {
-            ...grapherConfig,
             ...grapherConfigFromExplorer,
             hideEntityControls: this.showExplorerControls,
             manuallyProvideData: tableSlug ? true : false,
@@ -287,7 +244,7 @@ export class Explorer
         this.fetchTableAndStoreInCache(tableSlug) // Fetch a remote table in the background, if any.
         grapher.downloadData()
         grapher.slug = this.explorerProgram.slug
-        if (!hasGrapherId) grapher.id = 0
+        grapher.id = 0
     }
 
     @action.bound private setTableBySlug(tableSlug?: TableSlug) {

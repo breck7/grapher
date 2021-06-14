@@ -9,19 +9,16 @@ import {
 import { ExplorerGrammar } from "../explorer/ExplorerGrammar"
 import { GrapherGrammar } from "../explorer/GrapherGrammar"
 
-const grapherIdKeyword = GrapherGrammar.grapherId.keyword
+const grapherIdKeyword = "grapherId"
 const tableSlugKeyword = GrapherGrammar.tableSlug.keyword
 
 describe(ExplorerProgram, () => {
     const testProgram = `${ExplorerGrammar.graphers.keyword}
-	${grapherIdKeyword}	Examples Radio	title	subtitle	${tableSlugKeyword}	type	ySlugs	hasMapTab
-	35	Load A Grapher Demo
-		Create A Grapher Demo	Hello world	This is a subtitle	demo	DiscreteBar	gdp	true
-		Data from CSV Demo	Healthy Life Expectancy		lifeExpectancy	LineChart	Healthy-Life-Expectancy-IHME`
+    ${grapherIdKeyword}    Examples Radio    title    subtitle    ${tableSlugKeyword}    type    ySlugs    hasMapTab
+    35    Load A Grapher Demo
+        Create A Grapher Demo    Hello world    This is a subtitle    demo    DiscreteBar    gdp    true
+        Data from CSV Demo    Healthy Life Expectancy        lifeExpectancy    LineChart    Healthy-Life-Expectancy-IHME`
     const program = new ExplorerProgram("test", testProgram)
-    it("gets the required grapher ids", () => {
-        expect(program.decisionMatrix.requiredGrapherIds).toEqual([35])
-    })
 
     it("gets code", () => {
         expect(program.decisionMatrixCode).toContain(grapherIdKeyword)
@@ -34,9 +31,7 @@ ${ExplorerGrammar.graphers.keyword}
 \t35\tInternet
 
 \t46\tMobile`
-        expect(
-            new ExplorerProgram("test", code).decisionMatrix.requiredGrapherIds
-        ).toEqual([35, 46])
+        expect(new ExplorerProgram("test", code).decisionMatrix).toBeTruthy()
     })
 
     it("supports comments", () => {
@@ -158,18 +153,6 @@ describe(DecisionMatrix, () => {
 
     it("it can get all options", () => {
         expect(decisionMatrix.allDecisionsAsPatches().length).toBe(7)
-    })
-
-    it("can detect needed chart configs", () => {
-        expect(decisionMatrix.requiredGrapherIds).toEqual([
-            21,
-            24,
-            26,
-            29,
-            33,
-            55,
-            56,
-        ])
     })
 
     it("can detect unavailable options", () => {

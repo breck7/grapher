@@ -7,7 +7,6 @@
     "references": [
         { "path": "../site" },
         { "path": "../explorerAdmin" },
-        { "path": "../db" },
         { "path": "../settings" },
         { "path": "../urls" }
     ]

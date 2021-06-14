@@ -44,7 +44,6 @@ export interface TableDef {
 }
 
 interface ExplorerGrapherInterface extends GrapherInterface {
-    grapherId?: number
     tableSlug?: string
     yScaleToggle?: boolean
     yAxisMin?: number
@@ -173,13 +172,6 @@ export class ExplorerProgram extends GridProgram {
             ExplorerGrammar.isPublished.keyword,
             value ? GridBoolean.true : GridBoolean.false
         )
-    }
-
-    get wpBlockId() {
-        const blockIdString = this.getLineValue(
-            ExplorerGrammar.wpBlockId.keyword
-        )
-        return blockIdString ? parseInt(blockIdString, 10) : undefined
     }
 
     get decisionMatrixCode() {
@@ -406,13 +398,7 @@ export class DecisionMatrix {
     @observable currentPatch: DecisionsPatchObject = {}
     constructor(delimited: string, hash = "") {
         this.choices = makeChoicesMap(delimited)
-        this.table = new CoreTable(parseDelimited(delimited), [
-            // todo: remove col def?
-            {
-                slug: GrapherGrammar.grapherId.keyword,
-                type: ColumnTypeNames.Integer,
-            },
-        ])
+        this.table = new CoreTable(parseDelimited(delimited))
         this.hash = hash
         this.setValuesFromPatch() // Initialize options
     }
@@ -429,10 +415,6 @@ export class DecisionMatrix {
 
     get numRows() {
         return this.table.numRows
-    }
-
-    get requiredGrapherIds() {
-        return this.table.get(GrapherGrammar.grapherId.keyword).uniqValues
     }
 
     private choices: Map<ChoiceName, ExplorerControlType>
@@ -533,13 +515,13 @@ export class DecisionMatrix {
      * we will return first match, which is B1, even though B2 is a better match.
      *
      * graphers
-     * title	Metric Radio	Interval Radio	Aligned Checkbox
-     * A1	Cases	Cumulative	true
-     * A2	Cases	Cumulative	false
-     * A3	Cases	Weekly	false
+     * title    Metric Radio    Interval Radio    Aligned Checkbox
+     * A1    Cases    Cumulative    true
+     * A2    Cases    Cumulative    false
+     * A3    Cases    Weekly    false
      *
-     * B1	Tests	Cumulative	true
-     * B2	Tests	Cumulative	false
+     * B1    Tests    Cumulative    true
+     * B2    Tests    Cumulative    false
      */
     isOptionAvailable(
         choiceName: ChoiceName,

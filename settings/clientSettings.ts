@@ -21,9 +21,6 @@ export const ADMIN_BASE_URL =
 export const WORDPRESS_URL =
     clientSettings.WORDPRESS_URL ?? "https://owid.cloud"
 
-export const ALGOLIA_ID = clientSettings.ALGOLIA_ID ?? ""
-export const ALGOLIA_SEARCH_KEY = clientSettings.ALGOLIA_SEARCH_KEY ?? ""
-
 export const STRIPE_PUBLIC_KEY =
     clientSettings.STRIPE_PUBLIC_KEY ?? "pk_test_nIHvmH37zsoltpw3xMssPIYq"
 export const DONATE_API_URL =

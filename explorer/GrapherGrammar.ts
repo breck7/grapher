@@ -42,11 +42,6 @@ export const GrapherGrammar: Grammar = {
             cssClass: "",
         })),
     },
-    grapherId: {
-        ...IntegerCellDef,
-        description: "ID of a legacy Grapher to load",
-        keyword: "grapherId",
-    },
     tableSlug: {
         ...SlugDeclarationCellDef,
         description: "Slug of the table to use.",

@@ -11,23 +11,15 @@ import {
     ENV,
     SLACK_ERRORS_WEBHOOK_URL,
 } from "../settings/serverSettings"
-import * as db from "../db/db"
-import * as wpdb from "../db/wpdb"
 import { log } from "../baker/slackLog"
 import { IndexPage } from "./IndexPage"
-import { apiRouter } from "./apiRouter"
-import { testPageRouter } from "./testPageRouter"
 import { adminRouter } from "./adminRouter"
 import { renderToHtmlPage } from "./serverUtil"
 
-import { publicApiRouter } from "./publicApiRouter"
 import { mockSiteRouter } from "./mockSiteRouter"
 import { GIT_CMS_DIR } from "../gitCms/GitCmsConstants"
 
-const expressErrorSlack = require("express-error-slack") // todo: why the require?
-
 interface OwidAdminAppOptions {
-    slackErrorsWebHookUrl?: string
     gitCmsDir: string
     isDev: boolean
     quiet?: boolean
@@ -68,9 +60,6 @@ export class OwidAdminApp {
 
         app.use(express.urlencoded({ extended: true, limit: "50mb" }))
 
-        app.use("/api", publicApiRouter.router)
-        app.use("/admin/api", apiRouter.router)
-        app.use("/admin/test", testPageRouter)
         app.use("/admin/assets", express.static("itsJustJavascript/webpack"))
         app.use("/admin/storybook", express.static(".storybook/build"))
         app.use("/admin", adminRouter)
@@ -87,15 +76,6 @@ export class OwidAdminApp {
                 )
             )
         })
-
-        // Send errors to Slack
-        // The middleware passes all errors onto the next error-handling middleware
-        if (this.options.slackErrorsWebHookUrl)
-            app.use(
-                expressErrorSlack({
-                    webhookUri: this.options.slackErrorsWebHookUrl,
-                })
-            )
 
         // todo: we probably always want to have this, and can remove the isDev
         if (this.options.isDev) app.use("/", mockSiteRouter)
@@ -125,30 +105,6 @@ export class OwidAdminApp {
             }
         )
 
-        try {
-            await db.getConnection()
-        } catch (err) {
-            if (!this.options.quiet) {
-                console.log(`Failed to connect to grapher mysql database.`)
-                console.error(err)
-                console.log(
-                    "Could not connect to Wordpress database. Continuing without DB..."
-                )
-            }
-        }
-
-        // The Grapher should be able to work without Wordpress being set up.
-        try {
-            await wpdb.singleton.connect()
-        } catch (error) {
-            if (!this.options.quiet) {
-                console.error(error)
-                console.log(
-                    "Could not connect to Wordpress database. Continuing without Wordpress..."
-                )
-            }
-        }
-
         const server = app.listen(adminServerPort, adminServerHost, () => {
             console.log(
                 `owid-admin server started on http://${adminServerHost}:${adminServerPort}`
@@ -163,7 +119,6 @@ export class OwidAdminApp {
 
 if (!module.parent)
     new OwidAdminApp({
-        slackErrorsWebHookUrl: SLACK_ERRORS_WEBHOOK_URL,
         gitCmsDir: GIT_CMS_DIR,
         isDev: ENV === "development",
     }).startListening(ADMIN_SERVER_PORT, ADMIN_SERVER_HOST)
