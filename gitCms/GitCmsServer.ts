@@ -29,11 +29,6 @@ import {
 } from "./GitCmsConstants"
 import { sync } from "glob"
 
-// todo: cleanup typings
-interface ResponseWithUserInfo extends Response {
-    locals: { user: any; session: any }
-}
-
 interface GitCmsServerOptions {
     baseDir: string
     shouldAutoPush?: boolean
@@ -206,32 +201,21 @@ export class GitCmsServer {
     addToRouter(app: Router) {
         const routes: { [route: string]: RequestHandler } = {}
 
-        routes[GIT_CMS_PULL_ROUTE] = async (
-            req: Request,
-            res: ResponseWithUserInfo
-        ) => res.send(await this.pullCommand()) // Pull latest from github
+        routes[GIT_CMS_PULL_ROUTE] = async (req: Request, res: Response) =>
+            res.send(await this.pullCommand()) // Pull latest from github
 
-        routes[GIT_CMS_GLOB_ROUTE] = async (
-            req: Request,
-            res: ResponseWithUserInfo
-        ) => {
+        routes[GIT_CMS_GLOB_ROUTE] = async (req: Request, res: Response) => {
             // Get multiple file contents
             const request = req.body as GlobRequest
             res.send(await this.globCommand(request.glob, request.folder))
         }
 
-        routes[GIT_CMS_READ_ROUTE] = async (
-            req: Request,
-            res: ResponseWithUserInfo
-        ) => {
+        routes[GIT_CMS_READ_ROUTE] = async (req: Request, res: Response) => {
             const request = req.body as ReadRequest
             res.send(await this.readFileCommand(request.filepath))
         }
 
-        routes[GIT_CMS_WRITE_ROUTE] = async (
-            req: Request,
-            res: ResponseWithUserInfo
-        ) => {
+        routes[GIT_CMS_WRITE_ROUTE] = async (req: Request, res: Response) => {
             // Update/create file, commit, and push(unless on local dev brach)
             const request = req.body as WriteRequest
             const { filepath, content, commitMessage } = request
@@ -246,10 +230,7 @@ export class GitCmsServer {
             )
         }
 
-        routes[GIT_CMS_DELETE_ROUTE] = async (
-            req: Request,
-            res: ResponseWithUserInfo
-        ) => {
+        routes[GIT_CMS_DELETE_ROUTE] = async (req: Request, res: Response) => {
             // Delete file, commit, and and push(unless on local dev brach)
             const request = req.body as DeleteRequest
             res.send(
