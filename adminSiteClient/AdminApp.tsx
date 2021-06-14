@@ -2,7 +2,6 @@ import * as React from "react"
 import { Admin } from "./Admin"
 import { action } from "mobx"
 import { observer } from "mobx-react"
-import { TestIndexPage } from "./TestIndexPage"
 import { ImportPage } from "./ImportPage"
 import { NotFoundPage } from "./NotFoundPage"
 import {
@@ -109,11 +108,6 @@ export class AdminApp extends React.Component<{
                                         <ExplorersIndexPage />
                                     </AdminLayout>
                                 )}
-                            />
-                            <Route
-                                exact
-                                path="/test"
-                                component={TestIndexPage}
                             />
                             <Route
                                 exact

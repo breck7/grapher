@@ -21,60 +21,8 @@ export const AdminSidebar = () => (
         <ul className="sidebar-menu">
             <li className="header">SITE</li>
             <li>
-                <Link to="/charts">
-                    <FontAwesomeIcon icon={faChartBar} /> Charts
-                </Link>
-            </li>
-            <li>
-                <Link to="/posts">
-                    <FontAwesomeIcon icon={faFile} /> Posts
-                </Link>
-            </li>
-            <li>
                 <Link to="/explorers">
                     <FontAwesomeIcon icon={faCoffee} /> Explorers
-                </Link>
-            </li>
-            <li className="header">DATA</li>
-            <li>
-                <Link to="/import">
-                    <FontAwesomeIcon icon={faUpload} /> Import CSV
-                </Link>
-            </li>
-            <li>
-                <Link to="/datasets">
-                    <FontAwesomeIcon icon={faTable} /> Datasets
-                </Link>
-            </li>
-            <li>
-                <Link to="/variables">
-                    <FontAwesomeIcon icon={faDatabase} /> Variables
-                </Link>
-            </li>
-            <li>
-                <Link to="/standardize">
-                    <FontAwesomeIcon icon={faGlobe} /> Country tool
-                </Link>
-            </li>
-            <li>
-                <Link to="/tags">
-                    <FontAwesomeIcon icon={faTag} /> Tags
-                </Link>
-            </li>
-            <li className="header">SETTINGS</li>
-            <li>
-                <Link to="/users/">
-                    <FontAwesomeIcon icon={faUser} /> Users
-                </Link>
-            </li>
-            <li>
-                <Link to="/redirects">
-                    <FontAwesomeIcon icon={faArrowRight} /> Redirects
-                </Link>
-            </li>
-            <li>
-                <Link to="/test">
-                    <FontAwesomeIcon icon={faEye} /> Test
                 </Link>
             </li>
             <li>
@@ -85,15 +33,6 @@ export const AdminSidebar = () => (
                 >
                     <FontAwesomeIcon icon={faBook} /> Storybook
                 </a>
-            </li>
-            <li className="header">UTILITIES</li>
-            <li>
-                <Link to="/deploys">
-                    <FontAwesomeIcon icon={faSatelliteDish} /> Deploy status
-                </Link>
-                <Link to="/newsletter">
-                    <FontAwesomeIcon icon={faNewspaper} /> Newsletter
-                </Link>
             </li>
         </ul>
     </aside>
