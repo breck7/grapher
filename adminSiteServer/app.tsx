@@ -15,7 +15,6 @@ import * as db from "../db/db"
 import * as wpdb from "../db/wpdb"
 import { log } from "../baker/slackLog"
 import { IndexPage } from "./IndexPage"
-import { authCloudflareSSOMiddleware, authMiddleware } from "./authentication"
 import { apiRouter } from "./apiRouter"
 import { testPageRouter } from "./testPageRouter"
 import { adminRouter } from "./adminRouter"
@@ -68,11 +67,6 @@ export class OwidAdminApp {
         app.use(cookieParser())
 
         app.use(express.urlencoded({ extended: true, limit: "50mb" }))
-
-        app.use("/admin/login", authCloudflareSSOMiddleware)
-
-        // Require authentication (only for /admin requests)
-        app.use(authMiddleware)
 
         app.use("/api", publicApiRouter.router)
         app.use("/admin/api", apiRouter.router)
