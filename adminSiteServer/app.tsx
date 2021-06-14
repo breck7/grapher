@@ -58,7 +58,11 @@ export class OwidAdminApp {
 
     private gitCmsBranchName = ""
 
-    async startListening(adminServerPort: number, adminServerHost: string) {
+    async startListening(
+        adminServerPort: number,
+        adminServerHost: string,
+        verbose = true
+    ) {
         this.gitCmsBranchName = await this.getGitCmsBranchName()
         const { app } = this
 
@@ -116,9 +120,10 @@ export class OwidAdminApp {
         )
 
         const server = app.listen(adminServerPort, adminServerHost, () => {
-            console.log(
-                `owid-admin server started on http://${adminServerHost}:${adminServerPort}`
-            )
+            if (verbose)
+                console.log(
+                    `owid-admin server started on http://${adminServerHost}:${adminServerPort}`
+                )
         })
         // Increase server timeout for long-running uploads
         server.timeout = 5 * 60 * 1000

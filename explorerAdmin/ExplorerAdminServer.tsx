@@ -34,6 +34,8 @@ export class ExplorerAdminServer {
         this.baseUrl = baseUrl
     }
 
+    verbose = true
+
     private baseUrl: string
     private gitDir: string
 
@@ -184,7 +186,8 @@ export class ExplorerAdminServer {
 
     private async getAllExplorers() {
         if (!existsSync(this.absoluteFolderPath)) {
-            console.log(`${this.absoluteFolderPath} does not exist`)
+            if (this.verbose)
+                console.log(`${this.absoluteFolderPath} does not exist`)
             return []
         }
         const files = await readdir(this.absoluteFolderPath)

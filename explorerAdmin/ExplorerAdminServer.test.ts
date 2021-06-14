@@ -5,6 +5,7 @@ import { ExplorerAdminServer } from "./ExplorerAdminServer"
 
 it("can init", async () => {
     const server = new ExplorerAdminServer(__dirname, "https://example.com")
+    server.verbose = false
     expect(server).toBeTruthy()
 
     expect(

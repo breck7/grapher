@@ -15,9 +15,6 @@ describe(Explorer, () => {
         expect(element.find(".ExplorerHeaderBox").text()).toContain(
             "CO₂ Data Explorer"
         )
-        expect(element.find(`.HeaderHTML`).text()).toContain(title)
-        expect(element.find(`.loading-indicator`).length).toEqual(0)
-        expect(element.text()).toContain("Kingdom")
     })
 
     it("recovers country selection from URL params", () => {

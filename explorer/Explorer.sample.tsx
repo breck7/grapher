@@ -6,43 +6,43 @@ import {
 } from "../grapher/core/GrapherConstants"
 import { Explorer, ExplorerProps } from "./Explorer"
 
-const SampleExplorerProgram = `explorerTitle    CO₂ Data Explorer
-explorerSubtitle    Download the complete <i>Our World in Data</i> <a href="https://github.com/owid/co2-data">CO₂ and GHG Emissions Dataset</a>.
-subNavId    co2
-time    earliest..latest
-selection    China    United States    India    United Kingdom    World
-Gas Radio    CO₂
-Accounting Radio    Production-based
-subNavCurrentId    co2-data-explorer
+const SampleExplorerProgram = `explorerTitle\tCO₂ Data Explorer
+explorerSubtitle\tDownload the complete <i>Our World in Data</i> <a href="https://github.com/owid/co2-data">CO₂ and GHG Emissions Dataset</a>.
+subNavId\tco2
+time\tearliest..latest
+selection\tChina\tUnited States\tIndia\tUnited Kingdom\tWorld
+Gas Radio\tCO₂
+Accounting Radio\tProduction-based
+subNavCurrentId\tco2-data-explorer
 graphers
-    grapherId    Gas Radio    Accounting Radio    Fuel Dropdown    Count Dropdown    Relative to world total Checkbox
-    488    CO₂    Production-based    Total    Per country    false
-    3219    CO₂    Production-based    Total    Per country    Share of global emissions
-    486    CO₂    Production-based    Total    Per capita
-    485    CO₂    Production-based    Total    Cumulative    false
-    3218    CO₂    Production-based    Total    Cumulative    Share of global emissions
-    4267    CO₂    Production-based    Total    Per MWh of energy
-    530    CO₂    Production-based    Total    Per $ of GDP
-    3621    CO₂    Consumption-based        Per country
-    3488    CO₂    Consumption-based        Per capita
-    4331    CO₂    Consumption-based        Per $ of GDP
-    696    CO₂    Consumption-based        Share of emissions embedded in trade
-    4250    CO₂    Production-based    Coal    Per country
-    4251    CO₂    Production-based    Oil    Per country
-    4253    CO₂    Production-based    Gas    Per country
-    4255    CO₂    Production-based    Cement    Per country
-    4332    CO₂    Production-based    Flaring    Per country
-    4249    CO₂    Production-based    Coal    Per capita
-    4252    CO₂    Production-based    Oil    Per capita
-    4254    CO₂    Production-based    Gas    Per capita
-    4256    CO₂    Production-based    Cement    Per capita
-    4333    CO₂    Production-based    Flaring    Per capita
-    4147    All GHGs (CO₂eq)    Production-based        Per country
-    4239    All GHGs (CO₂eq)    Production-based        Per capita
-    4222    Methane    Production-based        Per country
-    4243    Methane    Production-based        Per capita
-    4224    Nitrous oxide    Production-based        Per country
-    4244    Nitrous oxide    Production-based        Per capita`
+\tgrapherId\tGas Radio\tAccounting Radio\tFuel Dropdown\tCount Dropdown\tRelative to world total Checkbox
+\t488\tCO₂\tProduction-based\tTotal\tPer country\tfalse
+\t3219\tCO₂\tProduction-based\tTotal\tPer country\tShare of global emissions
+\t486\tCO₂\tProduction-based\tTotal\tPer capita
+\t485\tCO₂\tProduction-based\tTotal\tCumulative\tfalse
+\t3218\tCO₂\tProduction-based\tTotal\tCumulative\tShare of global emissions
+\t4267\tCO₂\tProduction-based\tTotal\tPer MWh of energy
+\t530\tCO₂\tProduction-based\tTotal\tPer $ of GDP
+\t3621\tCO₂\tConsumption-based\t\tPer country
+\t3488\tCO₂\tConsumption-based\t\tPer capita
+\t4331\tCO₂\tConsumption-based\t\tPer $ of GDP
+\t696\tCO₂\tConsumption-based\t\tShare of emissions embedded in trade
+\t4250\tCO₂\tProduction-based\tCoal\tPer country
+\t4251\tCO₂\tProduction-based\tOil\tPer country
+\t4253\tCO₂\tProduction-based\tGas\tPer country
+\t4255\tCO₂\tProduction-based\tCement\tPer country
+\t4332\tCO₂\tProduction-based\tFlaring\tPer country
+\t4249\tCO₂\tProduction-based\tCoal\tPer capita
+\t4252\tCO₂\tProduction-based\tOil\tPer capita
+\t4254\tCO₂\tProduction-based\tGas\tPer capita
+\t4256\tCO₂\tProduction-based\tCement\tPer capita
+\t4333\tCO₂\tProduction-based\tFlaring\tPer capita
+\t4147\tAll GHGs (CO₂eq)\tProduction-based\t\tPer country
+\t4239\tAll GHGs (CO₂eq)\tProduction-based\t\tPer capita
+\t4222\tMethane\tProduction-based\t\tPer country
+\t4243\tMethane\tProduction-based\t\tPer capita
+\t4224\tNitrous oxide\tProduction-based\t\tPer country
+\t4244\tNitrous oxide\tProduction-based\t\tPer capita`
 
 export const SampleExplorer = (props?: Partial<ExplorerProps>) => {
     const title = "AlphaBeta"

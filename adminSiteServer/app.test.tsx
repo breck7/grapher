@@ -8,7 +8,7 @@ describe(OwidAdminApp, () => {
     })
 
     it("should be able to start the app", async () => {
-        const server = await app.startListening(8765, "localhost")
+        const server = await app.startListening(8765, "localhost", false)
         expect(server).toBeTruthy()
         server.close()
     })
