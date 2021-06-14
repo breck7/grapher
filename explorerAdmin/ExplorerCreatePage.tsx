@@ -260,7 +260,7 @@ export class ExplorerCreatePage extends React.Component<{
                     />
                     <PictureInPicture previewLink={previewLink} />
                     <a className="PreviewLink" href={previewLink}>
-                        Visit preview
+                        Open
                     </a>
                 </main>
             </>
