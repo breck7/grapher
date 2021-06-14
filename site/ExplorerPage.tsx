@@ -5,7 +5,6 @@ import { SiteFooter } from "../site/SiteFooter"
 import { LoadingIndicator } from "../grapher/loadingIndicator/LoadingIndicator"
 import { IFrameDetector } from "../site/IframeDetector"
 import { SiteSubnavigation } from "../site/SiteSubnavigation"
-import { formatReusableBlock } from "../site/formatting"
 import {
     EMBEDDED_EXPLORER_DELIMITER,
     ExplorerContainerId,

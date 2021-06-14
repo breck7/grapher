@@ -1,14 +1,11 @@
 import { last } from "../clientUtils/Util"
-import { BAKED_BASE_URL, WORDPRESS_URL } from "../settings/clientSettings"
+import { BAKED_BASE_URL } from "../settings/clientSettings"
 
 // Standardize urls
 const formatLinks = (html: string) =>
     html
-        .replace(new RegExp(WORDPRESS_URL, "g"), BAKED_BASE_URL)
         .replace(new RegExp("https?://owid.cloud", "g"), BAKED_BASE_URL)
         .replace(new RegExp("https?://ourworldindata.org", "g"), BAKED_BASE_URL)
-
-export const formatReusableBlock = (html: string) => formatLinks(html)
 
 export const formatAuthors = (authors: string[], requireMax?: boolean) => {
     if (requireMax && authors.indexOf("Max Roser") === -1)

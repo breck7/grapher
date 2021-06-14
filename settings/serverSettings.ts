@@ -23,15 +23,6 @@ export const ADMIN_BASE_URL =
     localOverrides.ADMIN_BASE_URL ??
     `http://${ADMIN_SERVER_HOST}:${ADMIN_SERVER_PORT}`
 
-export const WORDPRESS_URL =
-    localOverrides.WORDPRESS_URL ?? "https://owid.cloud"
-
-export const RECAPTCHA_SITE_KEY =
-    localOverrides.RECAPTCHA_SITE_KEY ??
-    "6LcJl5YUAAAAAATQ6F4vl9dAWRZeKPBm15MAZj4Q"
-
-export const OPTIMIZE_SVG_EXPORTS = localOverrides.OPTIMIZE_SVG_EXPORTS ?? false
-
 export const GITHUB_USERNAME = localOverrides.GITHUB_USERNAME ?? "owid-test"
 export const GIT_DEFAULT_USERNAME =
     localOverrides.GIT_DEFAULT_USERNAME ?? "Our World in Data"

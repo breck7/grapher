@@ -97,34 +97,3 @@
         display: inline-block;
     }
 }
-
-.donate-footer {
-    background-color: $tertiary-color;
-    padding: 1.25rem 0;
-    text-align: center;
-    margin-top: 2rem;
-
-    @include md-up {
-        text-align: left;
-    }
-
-    .wrapper {
-        @include content-wrapper;
-    }
-
-    p {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin: 0.5rem 0;
-    }
-
-    .donate-button {
-        display: inline-block;
-        font-size: 1.125rem;
-        background-color: $secondary-color;
-
-        .icon {
-            margin-left: 0.5rem;
-        }
-    }
-}

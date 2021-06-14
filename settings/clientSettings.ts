@@ -18,15 +18,3 @@ export const BAKED_GRAPHER_URL =
 export const ADMIN_BASE_URL =
     clientSettings.ADMIN_BASE_URL ??
     `http://${ADMIN_SERVER_HOST}:${ADMIN_SERVER_PORT}`
-export const WORDPRESS_URL =
-    clientSettings.WORDPRESS_URL ?? "https://owid.cloud"
-
-export const STRIPE_PUBLIC_KEY =
-    clientSettings.STRIPE_PUBLIC_KEY ?? "pk_test_nIHvmH37zsoltpw3xMssPIYq"
-export const DONATE_API_URL =
-    clientSettings.DONATE_API_URL ?? "http://localhost:9000/donate"
-
-export const RECAPTCHA_SITE_KEY =
-    clientSettings.RECAPTCHA_SITE_KEY ??
-    "6LcJl5YUAAAAAATQ6F4vl9dAWRZeKPBm15MAZj4Q"
-export const OPTIMIZE_SVG_EXPORTS = clientSettings.OPTIMIZE_SVG_EXPORTS ?? false

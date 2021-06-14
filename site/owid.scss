@@ -42,7 +42,6 @@
 @import "css/site-tools.scss";
 @import "css/newsletter-subscription.scss";
 @import "css/lightbox.scss";
-@import "css/alert-banner.scss";
 
 @import "explorer/Explorer.scss";
 @import "explorer/ExplorerControls.scss";
@@ -902,7 +901,6 @@ html:not(.js) {
 
 @media print {
     .site-header,
-    .alert-banner,
     .offset-subnavigation,
     footer.SiteFooter,
     #un-button,
@@ -935,61 +933,6 @@ html:not(.js) {
     pre,
     blockquote {
         page-break-inside: avoid;
-    }
-}
-
-.ChartsIndexPage main,
-.EntriesByYearPage main {
-    padding-top: 0;
-    padding-bottom: 0;
-
-    .content {
-        padding-left: 3vw;
-        padding-right: 3vw;
-        padding-bottom: 100px;
-
-        .chartsHeader {
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        input[type="search"] {
-            width: 100%;
-            padding: 10px;
-        }
-
-        h2 {
-            font-size: 0.9em;
-            color: #444;
-            margin-top: 1.1em;
-            margin-bottom: 0.1em;
-        }
-
-        ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
-            grid-column-gap: 1rem;
-        }
-
-        ul > li {
-            width: 100%;
-            list-style-type: none;
-            padding: 0.1em 0;
-            padding-right: 0.1em;
-            font-size: 0.8em;
-            max-width: 90vw;
-        }
-
-        /* Make the ending lines look nice */
-        /* https://stackoverflow.com/questions/18744164/flex-box-align-last-row-to-grid */
-        ul::after {
-            content: "";
-            flex: 1 0 400px;
-        }
-
-        a {
-            @include owid-link;
-        }
     }
 }
 
@@ -1059,154 +1002,8 @@ html:not(.js) {
     }
 }
 
-.SearchResults {
-    padding-bottom: 200px;
-
-    > .container {
-        max-width: 80rem;
-        margin: auto;
-        display: flex;
-        flex-direction: row;
-    }
-
-    > .container > :first-child {
-        margin-right: 5rem;
-    }
-
-    .postResults,
-    .chartResults {
-        width: 50%;
-
-        > h2 {
-            color: #666;
-            font-weight: normal;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #ccc;
-        }
-    }
-
-    .postResults li {
-        list-style-type: none;
-
-        a {
-            font-size: 16px;
-        }
-
-        p {
-            font-size: 13px;
-        }
-    }
-
-    .chartResults > ul > li {
-        list-style-type: none;
-        line-height: 1.8em;
-
-        p {
-            font-size: 13px;
-        }
-    }
-
-    .postResults em,
-    .ChartResult em {
-        font-style: normal;
-        font-weight: bold;
-    }
-
-    .algoliaCredit {
-        max-width: 80rem;
-        margin: auto;
-        margin-top: 2rem;
-        text-align: right;
-        opacity: 0.9;
-    }
-}
-
-@media (max-width: 768px) {
-    .SearchPage {
-        > main {
-            margin-left: 15px;
-            margin-right: 15px;
-        }
-
-        .SearchResults > .container {
-            display: block;
-        }
-
-        .postResults,
-        .chartResults {
-            width: 100%;
-        }
-    }
-}
-
 .variantName {
     margin-left: 3px;
     color: $grey-text-color;
     font-size: 0.9em;
-}
-
-.CountryProfilePage {
-    main {
-        margin: auto;
-        max-width: 900px;
-
-        header {
-            display: flex;
-            margin-top: 20px;
-            margin-bottom: 20px;
-
-            img.flag {
-                max-height: 100px;
-                margin-right: 20px;
-            }
-        }
-
-        input[type="search"] {
-            width: 100%;
-            padding: 10px;
-        }
-
-        ul {
-            li {
-                display: flex;
-                list-style-type: none;
-                border-bottom: 1px solid #c5c9d3;
-                font-size: 14px;
-            }
-
-            .indicatorName {
-                line-height: 32px;
-                flex-grow: 1;
-            }
-
-            .indicatorValue {
-                line-height: 32px;
-                text-align: right;
-            }
-        }
-    }
-}
-
-.CountriesIndexPage > main {
-    max-width: 1100px;
-    margin: auto;
-
-    ul {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-        grid-column-gap: 1rem;
-    }
-
-    li {
-        width: 100%;
-        list-style-type: none;
-        padding-right: 1em;
-        font-size: 0.8em;
-        max-width: 90vw;
-    }
-
-    .flag {
-        width: 16px;
-        margin-right: 4px;
-    }
 }

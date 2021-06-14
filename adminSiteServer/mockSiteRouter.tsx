@@ -9,10 +9,8 @@ import {
 } from "../settings/serverSettings"
 
 import { expectInt, renderToHtmlPage } from "./serverUtil"
-import { countryProfileSpecs } from "../site/countryProfileProjects"
 import { ExplorerAdminServer } from "../explorerAdmin/ExplorerAdminServer"
 import { MultiEmbedderTestPage } from "../site/multiembedder/MultiEmbedderTestPage"
-import { bakeEmbedSnippet } from "../site/webpackUtils"
 import { JsonError } from "../clientUtils/owidTypes"
 import { GIT_CMS_DIR } from "../gitCms/GitCmsConstants"
 
