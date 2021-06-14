@@ -8,7 +8,6 @@ import {
     IReactionDisposer,
 } from "mobx"
 import { observer } from "mobx-react"
-import { HeaderSearch } from "./HeaderSearch"
 import classnames from "classnames"
 import { flatten } from "../clientUtils/Util"
 import { bind } from "decko"
@@ -172,7 +171,6 @@ class Header extends React.Component<{
                         </div>
                         <div>
                             <div className="site-primary-navigation">
-                                <HeaderSearch />
                                 <ul className="site-primary-links">
                                     <li>
                                         <a

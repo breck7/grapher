@@ -1,7 +1,6 @@
 import React from "react"
 import { existsSync, readdir, writeFile, mkdirp, readFile } from "fs-extra"
 import path from "path"
-import { queryMysql } from "../db/db"
 import {
     EXPLORER_FILE_SUFFIX,
     ExplorerProgram,

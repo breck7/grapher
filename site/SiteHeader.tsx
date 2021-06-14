@@ -1,5 +1,4 @@
 import * as React from "react"
-import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch"
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars"
 import { faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons/faEnvelopeOpenText"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -39,20 +38,6 @@ export const SiteHeader = (props: SiteHeaderProps) => (
                     </div>
                     <div>
                         <div className="site-primary-navigation">
-                            <form
-                                className="HeaderSearch"
-                                action="/search"
-                                method="GET"
-                            >
-                                <input
-                                    type="search"
-                                    name="q"
-                                    placeholder="Search..."
-                                />
-                                <div className="icon">
-                                    <FontAwesomeIcon icon={faSearch} />
-                                </div>
-                            </form>
                             <ul className="site-primary-links">
                                 <li>
                                     <a
@@ -124,9 +109,6 @@ export const SiteHeader = (props: SiteHeaderProps) => (
                     </a>
                 </div>
                 <div className="mobile-site-navigation">
-                    <button data-track-note="mobile-search-button">
-                        <FontAwesomeIcon icon={faSearch} />
-                    </button>
                     <button data-track-note="mobile-newsletter-button">
                         <FontAwesomeIcon icon={faEnvelopeOpenText} />
                     </button>

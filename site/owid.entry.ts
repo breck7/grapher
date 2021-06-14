@@ -8,7 +8,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css"
 import SmoothScroll from "smooth-scroll"
 import { runChartsIndexPage } from "./runChartsIndexPage"
 import { runHeaderMenus } from "./SiteHeaderMenus"
-import { runSearchPage } from "./SearchPageMain"
 import { runNotFoundPage } from "./NotFoundPageMain"
 import { runFeedbackPage } from "./Feedback"
 import { runDonateForm } from "./stripe/DonateForm"
@@ -39,7 +38,6 @@ window.Grapher = Grapher
 window.Explorer = Explorer
 window.CoreTable = CoreTable
 window.runChartsIndexPage = runChartsIndexPage
-window.runSearchPage = runSearchPage
 window.runNotFoundPage = runNotFoundPage
 window.runFeedbackPage = runFeedbackPage
 window.runDonateForm = runDonateForm
