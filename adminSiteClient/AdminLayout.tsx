@@ -3,7 +3,6 @@ import { observable, action, computed } from "mobx"
 import { observer } from "mobx-react"
 
 import { Link } from "./Link"
-import { EditorFAQ } from "./EditorFAQ"
 import { AdminSidebar } from "./AdminSidebar"
 import { AdminAppContext, AdminAppContextType } from "./AdminAppContext"
 import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus"
@@ -66,7 +65,6 @@ export class AdminLayout extends React.Component<{
             <div
                 className={"AdminLayout" + (showSidebar ? " withSidebar" : "")}
             >
-                {isFAQ && <EditorFAQ onClose={this.onToggleFAQ} />}
                 <nav className="navbar navbar-dark bg-dark flex-row navbar-expand-lg">
                     <button
                         className="navbar-toggler"
@@ -79,11 +77,6 @@ export class AdminLayout extends React.Component<{
                         owid-admin {environmentSpan}
                     </Link>
                     <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/charts/create">
-                                <FontAwesomeIcon icon={faPlus} /> New chart
-                            </Link>
-                        </li>
                         <li className="nav-item">
                             <a
                                 className="nav-link"

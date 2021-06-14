@@ -10,7 +10,7 @@ export const IndexPage = (props: {
         window.isEditor = true
         window.admin = new Admin({ username: "${
             props.username
-        }"}, settings: ${JSON.stringify({ ENV, GITHUB_USERNAME })}})
+        }", settings: ${JSON.stringify({ ENV, GITHUB_USERNAME })}})
         admin.start(document.querySelector("#app"), '${props.gitCmsBranchName}')
 `
 
@@ -41,11 +41,6 @@ export const IndexPage = (props: {
                 <script
                     type="text/javascript"
                     dangerouslySetInnerHTML={{ __html: script }}
-                />
-                {/* This lets the public frontend know to show edit links and such */}
-                <iframe
-                    src="https://ourworldindata.org/identifyadmin"
-                    style={{ display: "none" }}
                 />
             </body>
         </html>

@@ -156,241 +156,12 @@ body {
     }
 }
 
-.EditorFAQ {
-    .modal-dialog {
-        max-width: 800px;
-    }
-
-    .modal-body {
-        max-height: 80vh;
-        overflow-y: scroll;
-    }
-
-    h6 {
-        font-weight: bold;
-    }
-
-    h6:not(:first-child) {
-        margin-top: 20px;
-    }
-}
-
-.ChartEditorPage {
-    display: flex;
-    flex-grow: 1;
-
-    .btn-group .btn {
-        width: 50px;
-    }
-
-    .form-group > label {
-        margin-bottom: 0;
-    }
-
-    .nav-tabs :not(.active).nav-link {
-        background: #f9f9f9;
-    }
-
-    .nav-tabs .nav-link {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
-    }
-
-    > .chart-editor-settings {
-        min-width: 500px;
-        width: 500px;
-        min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-    }
-
-    .innerForm {
-        overflow-y: scroll;
-        flex-grow: 1;
-    }
-
-    .SaveButtons {
-        padding: 24px;
-    }
-
-    > .chart-editor-view {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        align-items: center;
-        justify-content: center;
-    }
-
-    section {
-        padding: 1.2em;
-        border-radius: 0.4em;
-        margin-bottom: 1.2em;
-        background-color: #f9f9f9;
-
-        > h5 {
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #ccc;
-        }
-    }
-}
-
-.EditorBasicTab {
-    .list-group {
-        margin-top: 0;
-        margin-bottom: 0.5em;
-    }
-
-    .DimensionCard {
-        header {
-            display: flex;
-            color: #666;
-            text-align: center;
-
-            > div {
-                &:not(:first-child) {
-                    margin-left: 4%;
-                }
-            }
-        }
-
-        > div {
-            margin: 1em 0;
-        }
-
-        .dimensionLink {
-            color: inherit;
-            text-decoration: underline;
-            text-decoration-color: rgba(0, 0, 0, 0.2);
-
-            &:hover {
-                text-decoration-color: inherit;
-            }
-        }
-    }
-
-    .dimensionSlot {
-        cursor: pointer;
-        min-height: 50px;
-        border: 1px dashed #bbb;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #666;
-    }
-}
-
 .ColorableItem {
     display: flex;
     align-items: center;
 
     > div {
         margin-right: 0.5em;
-    }
-}
-
-.VariableSelector {
-    .modal-dialog {
-        min-width: 800px;
-        max-width: 90vw;
-    }
-
-    .modal-body > div {
-        display: flex !important;
-        justify-content: space-between;
-    }
-
-    .selectedData {
-        min-width: 25%;
-        padding-left: 1em;
-        max-height: 550px;
-        overflow-y: auto;
-    }
-
-    .searchResults {
-        width: 100%;
-    }
-
-    .searchResults h5 {
-        color: #666;
-        font-size: 1rem;
-        padding-bottom: 5px;
-        border-bottom: 1px solid #ccc;
-    }
-
-    .searchResults ul {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .searchResults b {
-        color: orange;
-    }
-
-    ul {
-        padding: 0;
-    }
-
-    li {
-        list-style-type: none;
-        flex: 1 0 15em;
-        min-height: 32px;
-    }
-
-    li > .form-check {
-        width: 100%;
-        margin-bottom: 0;
-    }
-
-    input[type="search"] {
-        width: 100%;
-        font-size: 0.9em;
-        padding: 0.4em;
-        margin-bottom: 0.4em;
-        border: 1px solid #ccc;
-    }
-
-    .muted-option {
-        opacity: 0.55;
-    }
-
-    .icon {
-        color: #999;
-        margin-right: 5px;
-    }
-
-    .badge {
-        background-color: #999;
-        border-radius: 2px;
-        text-transform: uppercase;
-        font-size: 10px;
-        font-weight: 700;
-        padding: 3px 4px;
-        color: white;
-        margin-left: 4px;
-    }
-}
-
-.EditorDataTab {
-    .EditableListItem {
-        @extend .draggable;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        > div {
-            display: flex;
-            align-items: center;
-        }
-
-        i {
-            font-size: 1.2rem;
-            color: #666;
-        }
-
-        > div:first-child > * {
-            margin-right: 12px;
-        }
     }
 }
 
@@ -433,26 +204,6 @@ body {
 
 .BinLabelView .FieldsRow {
     margin-bottom: 0;
-}
-
-.EditorScatterTab {
-    ul.excludedEntities {
-        padding: 0;
-
-        li {
-            list-style-type: none;
-            display: inline-flex;
-            align-items: center;
-            padding: 1em;
-            background: white;
-            border-radius: 0.5em;
-            margin-right: 0.5em;
-        }
-
-        .clickable {
-            margin-right: 0.2em;
-        }
-    }
 }
 
 /* Reusable utility classes */
@@ -554,10 +305,6 @@ body {
     .modal-dialog {
         max-width: 80%;
     }
-}
-
-main:not(.ChartEditorPage) {
-    padding: 2em;
 }
 
 .chartPreview {
@@ -754,20 +501,6 @@ main:not(.ChartEditorPage) {
     // Tweak to stop suggestions overlapping "Add new tag" in another tag input below
     .react-tags__suggestions {
         z-index: 10;
-    }
-}
-
-.NewsletterPage {
-    h2 {
-        font-size: 1.25rem;
-
-        a {
-            user-select: all;
-        }
-
-        b {
-            background-color: rgba(255, 217, 0, 0.315);
-        }
     }
 }
 

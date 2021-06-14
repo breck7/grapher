@@ -633,9 +633,7 @@ export class Grapher
      * like the "Edit" option in the share menu.
      */
     @computed get showAdminControls() {
-        // This cookie is set by visiting ourworldindata.org/identifyadmin on the static site.
-        // There is an iframe on owid.cloud to trigger a visit to that page.
-        return !!Cookies.get(CookieKey.isAdmin)
+        return true
     }
 
     @action.bound private async downloadLegacyDataFromOwidVariableIds() {
