@@ -27,7 +27,7 @@ mockSiteRouter.use(express.json())
 const explorerAdminServer = new ExplorerAdminServer(GIT_CMS_DIR, BAKED_BASE_URL)
 explorerAdminServer.addMockBakedSiteRoutes(mockSiteRouter)
 
-mockSiteRouter.get("/", async (req, res) => res.send("hello world"))
+mockSiteRouter.get("/", async (req, res) => res.redirect("/admin/"))
 
 mockSiteRouter.use("/", express.static(path.join(BASE_DIR, "public")))
 

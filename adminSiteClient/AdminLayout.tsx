@@ -88,9 +88,7 @@ export class AdminLayout extends React.Component<{
                     </ul>
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <a className="nav-link logout" href="/admin/logout">
-                                {admin.username}
-                            </a>
+                            <a className="nav-link">{admin.username}</a>
                         </li>
                     </ul>
                 </nav>

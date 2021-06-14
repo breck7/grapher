@@ -135,16 +135,6 @@ class ExplorerRow extends React.Component<{
                 <td>
                     <button
                         className="btn btn-danger"
-                        onClick={() =>
-                            indexPage.togglePublishedStatus(filename)
-                        }
-                    >
-                        {isPublished ? "Unpublish" : "Publish"}
-                    </button>
-                </td>
-                <td>
-                    <button
-                        className="btn btn-danger"
                         onClick={() => indexPage.deleteFile(filename)}
                     >
                         Delete{" "}
@@ -171,7 +161,6 @@ class ExplorerList extends React.Component<{
                         <th>Slug</th>
                         <th>Title</th>
                         <th>Last Updated</th>
-                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -254,7 +243,7 @@ export class ExplorersIndexPage extends React.Component<{
         )
 
         return (
-            <main className="DatasetsIndexPage">
+            <main>
                 <div className="ExplorersListPageHeader">
                     <div>
                         Showing {explorersToShow.length} of {numTotalRows}{" "}

@@ -25,15 +25,6 @@ export const AdminSidebar = () => (
                     <FontAwesomeIcon icon={faCoffee} /> Explorers
                 </Link>
             </li>
-            <li>
-                <a
-                    href="https://owid.github.io/stories/"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <FontAwesomeIcon icon={faBook} /> Storybook
-                </a>
-            </li>
         </ul>
     </aside>
 )

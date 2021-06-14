@@ -112,7 +112,7 @@ export class AdminApp extends React.Component<{
                             <Route
                                 exact
                                 path="/"
-                                render={() => <Redirect to="/charts" />}
+                                render={() => <Redirect to="/explorers" />}
                             />
                             <Route component={NotFoundPage} />
                         </Switch>

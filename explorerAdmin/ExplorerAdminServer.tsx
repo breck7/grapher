@@ -184,7 +184,10 @@ export class ExplorerAdminServer {
     }
 
     private async getAllExplorers() {
-        if (!existsSync(this.absoluteFolderPath)) return []
+        if (!existsSync(this.absoluteFolderPath)) {
+            console.log(`${this.absoluteFolderPath} does not exist`)
+            return []
+        }
         const files = await readdir(this.absoluteFolderPath)
         const explorerFiles = files.filter((filename) =>
             filename.endsWith(EXPLORER_FILE_SUFFIX)
