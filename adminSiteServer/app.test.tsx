@@ -1,7 +1,7 @@
 import { OwidAdminApp } from "./app"
 
 describe(OwidAdminApp, () => {
-    const app = new OwidAdminApp({ isDev: true, gitCmsDir: "", quiet: true })
+    const app = new OwidAdminApp({ gitCmsDir: "", quiet: true })
 
     it("should be able to create an app", () => {
         expect(app).toBeTruthy()

@@ -4,10 +4,7 @@ import { ChartEditorPage } from "./ChartEditorPage"
 import { action } from "mobx"
 import { observer } from "mobx-react"
 import { ChartIndexPage } from "./ChartIndexPage"
-import { UsersIndexPage } from "./UsersIndexPage"
 import { DatasetsIndexPage } from "./DatasetsIndexPage"
-import { CountryStandardizerPage } from "./CountryStandardizerPage"
-import { UserEditPage } from "./UserEditPage"
 import { VariableEditPage } from "./VariableEditPage"
 import { VariablesIndexPage } from "./VariablesIndexPage"
 import { DatasetEditPage } from "./DatasetEditPage"
@@ -161,20 +158,6 @@ export class AdminApp extends React.Component<{
                             />
                             <Route
                                 exact
-                                path="/users/:userId"
-                                render={({ match }) => (
-                                    <UserEditPage
-                                        userId={parseInt(match.params.userId)}
-                                    />
-                                )}
-                            />
-                            <Route
-                                exact
-                                path="/users"
-                                component={UsersIndexPage}
-                            />
-                            <Route
-                                exact
                                 path="/import"
                                 component={ImportPage}
                             />
@@ -220,11 +203,6 @@ export class AdminApp extends React.Component<{
                                         )}
                                     />
                                 )}
-                            />
-                            <Route
-                                exact
-                                path="/standardize"
-                                component={CountryStandardizerPage}
                             />
                             <Route
                                 exact

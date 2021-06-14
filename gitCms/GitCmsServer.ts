@@ -239,8 +239,8 @@ export class GitCmsServer {
                 await this.writeFileCommand(
                     filepath,
                     content,
-                    res.locals.user?.fullName, // todo: these are specific to our admin app
-                    res.locals.user?.email,
+                    "GrapherGenius", // todo: these are specific to our admin app
+                    "GrapherGenius@breckyunits.com",
                     commitMessage
                 )
             )
@@ -255,8 +255,8 @@ export class GitCmsServer {
             res.send(
                 await this.deleteFileCommand(
                     request.filepath,
-                    res.locals.user?.fullName,
-                    res.locals.user?.email
+                    "GrapherGenius",
+                    "GrapherGenius@breckyunits.com"
                 )
             )
         }

@@ -4,23 +4,36 @@ import express from "express"
 require("express-async-errors") // todo: why the require?
 import cookieParser from "cookie-parser"
 import "reflect-metadata"
-
 import {
     ADMIN_SERVER_HOST,
     ADMIN_SERVER_PORT,
-    ENV,
-    SLACK_ERRORS_WEBHOOK_URL,
 } from "../settings/serverSettings"
 import { IndexPage } from "./IndexPage"
-import { adminRouter } from "./adminRouter"
 import { renderToHtmlPage } from "./serverUtil"
-
 import { mockSiteRouter } from "./mockSiteRouter"
+import { Request, Response, Router } from "express"
+import { BAKED_BASE_URL } from "../settings/serverSettings"
+import { ExplorerAdminServer } from "../explorerAdmin/ExplorerAdminServer"
 import { GIT_CMS_DIR } from "../gitCms/GitCmsConstants"
+import { GitCmsServer } from "../gitCms/GitCmsServer"
+
+const adminRouter = Router()
+
+// Parse incoming requests with JSON payloads http://expressjs.com/en/api.html
+adminRouter.use(express.json({ limit: "50mb" }))
+
+const explorerAdminServer = new ExplorerAdminServer(GIT_CMS_DIR, BAKED_BASE_URL)
+explorerAdminServer.addAdminRoutes(adminRouter)
+
+const gitCmsServer = new GitCmsServer({
+    baseDir: GIT_CMS_DIR,
+    shouldAutoPush: true,
+})
+gitCmsServer.createDirAndInitIfNeeded()
+gitCmsServer.addToRouter(adminRouter)
 
 interface OwidAdminAppOptions {
     gitCmsDir: string
-    isDev: boolean
     quiet?: boolean
 }
 
@@ -68,16 +81,14 @@ export class OwidAdminApp {
             res.send(
                 renderToHtmlPage(
                     <IndexPage
-                        username={res.locals.user.fullName}
-                        isSuperuser={res.locals.user.isSuperuser}
+                        username={"GrapherGenius"}
                         gitCmsBranchName={this.gitCmsBranchName}
                     />
                 )
             )
         })
 
-        // todo: we probably always want to have this, and can remove the isDev
-        if (this.options.isDev) app.use("/", mockSiteRouter)
+        app.use("/", mockSiteRouter)
 
         // Give full error messages, including in production
         app.use(
@@ -119,5 +130,4 @@ export class OwidAdminApp {
 if (!module.parent)
     new OwidAdminApp({
         gitCmsDir: GIT_CMS_DIR,
-        isDev: ENV === "development",
     }).startListening(ADMIN_SERVER_PORT, ADMIN_SERVER_HOST)

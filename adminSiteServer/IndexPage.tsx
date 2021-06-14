@@ -4,16 +4,13 @@ import { webpackUrl } from "../site/webpackUtils"
 
 export const IndexPage = (props: {
     username: string
-    isSuperuser: boolean
     gitCmsBranchName: string
 }) => {
     const script = `
         window.isEditor = true
         window.admin = new Admin({ username: "${
             props.username
-        }", isSuperuser: ${props.isSuperuser.toString()}, settings: ${JSON.stringify(
-        { ENV, GITHUB_USERNAME }
-    )}})
+        }"}, settings: ${JSON.stringify({ ENV, GITHUB_USERNAME })}})
         admin.start(document.querySelector("#app"), '${props.gitCmsBranchName}')
 `
 

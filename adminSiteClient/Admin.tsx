@@ -25,17 +25,11 @@ export class Admin {
     }
     basePath: string
     username: string
-    isSuperuser: boolean
     settings: ClientSettings
 
-    constructor(props: {
-        username: string
-        isSuperuser: boolean
-        settings: ClientSettings
-    }) {
+    constructor(props: { username: string; settings: ClientSettings }) {
         this.basePath = "/admin"
         this.username = props.username
-        this.isSuperuser = props.isSuperuser
         this.settings = props.settings
     }
 
