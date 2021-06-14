@@ -11,10 +11,6 @@ import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight"
 import {
-    NewsletterSubscriptionForm,
-    NewsletterSubscriptionContext,
-} from "../site/NewsletterSubscription"
-import {
     CategoryWithEntries,
     EntryNode,
     FullPost,
@@ -215,21 +211,6 @@ export const FrontPage = (props: {
                 <section className="homepage-subscribe">
                     <div className="wrapper">
                         <div className="owid-row">
-                            <div className="owid-col owid-col--lg-2 flex-row owid-padding-bottom--sm-3">
-                                <div className="newsletter-subscription">
-                                    <div className="box">
-                                        <h2>Subscribe to our newsletter</h2>
-                                        <div className="root">
-                                            {/* Hydrated in runSiteTools() */}
-                                            <NewsletterSubscriptionForm
-                                                context={
-                                                    NewsletterSubscriptionContext.Homepage
-                                                }
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div className="owid-col owid-col--lg-1">
                                 <div className="homepage-subscribe--social-media">
                                     <div className="shaded-box">

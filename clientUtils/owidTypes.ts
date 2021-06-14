@@ -78,7 +78,6 @@ export interface FormattingOptions {
     subnavId?: SubNavId
     subnavCurrentId?: string
     raw?: boolean
-    hideDonateFooter?: boolean
     [key: string]: string | boolean | undefined
 }
 

@@ -7,18 +7,9 @@ import "@fortawesome/fontawesome-svg-core/styles.css"
 
 import SmoothScroll from "smooth-scroll"
 import { runChartsIndexPage } from "./runChartsIndexPage"
-import { runHeaderMenus } from "./SiteHeaderMenus"
 import { runNotFoundPage } from "./NotFoundPageMain"
-import { runFeedbackPage } from "./Feedback"
-import { runDonateForm } from "./stripe/DonateForm"
-import { runVariableCountryPage } from "./runVariableCountryPage"
-import { runCountryProfilePage } from "./runCountryProfilePage"
 import { runBlocks } from "./blocks"
-import { runTableOfContents } from "./TableOfContents"
-import { runRelatedCharts } from "./blocks/RelatedCharts"
 import { runLightbox } from "./Lightbox"
-import { runSiteTools } from "./SiteTools"
-import { runCovid } from "./covid/index"
 import { hydrateGlobalEntityControlIfAny } from "../grapher/controls/globalEntityControl/GlobalEntityControl"
 import { runFootnotes } from "./Footnote"
 import { Explorer } from "../explorer/Explorer"
@@ -35,21 +26,12 @@ window.Explorer = Explorer
 window.CoreTable = CoreTable
 window.runChartsIndexPage = runChartsIndexPage
 window.runNotFoundPage = runNotFoundPage
-window.runFeedbackPage = runFeedbackPage
-window.runDonateForm = runDonateForm
-window.runVariableCountryPage = runVariableCountryPage
-window.runCountryProfilePage = runCountryProfilePage
-window.runTableOfContents = runTableOfContents
-window.runRelatedCharts = runRelatedCharts
 window.MultiEmbedderSingleton = MultiEmbedderSingleton
 
 // Note: do a text search of the project for "runSiteFooterScripts" to find the usage. todo: clean that up.
 window.runSiteFooterScripts = () => {
-    runHeaderMenus(BAKED_BASE_URL)
     runBlocks()
     runLightbox()
-    runSiteTools()
-    runCovid()
     runFootnotes()
     if (!document.querySelector(`.${GRAPHER_PAGE_BODY_CLASS}`)) {
         MultiEmbedderSingleton.embedAll()

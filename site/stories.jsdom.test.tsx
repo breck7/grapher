@@ -8,8 +8,6 @@ configure({ adapter: new Adapter() })
 // For now, to get a list of all stories for updating this file:
 // git ls-tree -r master --name-only | grep .stories.tsx | sed 's/.tsx//'
 
-import * as Feedback from "./Feedback.stories"
-
 const runTests = (storybook: any) => {
     const defaults = storybook.default
     Object.keys(storybook).forEach((key) => {
@@ -22,5 +20,3 @@ const runTests = (storybook: any) => {
         })
     })
 }
-
-runTests(Feedback)

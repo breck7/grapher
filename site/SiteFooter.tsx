@@ -4,39 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight"
 
 interface SiteFooterProps {
-    hideDonate?: boolean
     baseUrl: string
 }
 
 export const SiteFooter = (props: SiteFooterProps) => (
     <>
-        {!props.hideDonate && (
-            <section className="donate-footer">
-                <div className="wrapper">
-                    <div className="owid-row flex-align-center">
-                        <div className="owid-col owid-col--lg-3 owid-padding-bottom--sm-3">
-                            <p>
-                                Our World in Data is free and accessible for
-                                everyone.
-                            </p>
-                            <p>Help us do this work by making a donation.</p>
-                        </div>
-                        <div className="owid-col owid-col--lg-1">
-                            <a
-                                href="/donate"
-                                className="owid-button donate-button"
-                                data-track-note="donate-footer"
-                            >
-                                <span className="label">Donate now</span>
-                                <span className="icon">
-                                    <FontAwesomeIcon icon={faAngleRight} />
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        )}
         <footer className="site-footer">
             <div className="wrapper">
                 <div className="owid-row">
@@ -56,14 +28,6 @@ export const SiteFooter = (props: SiteFooterProps) => (
                                     data-track-note="footer-navigation"
                                 >
                                     Contact
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/feedback"
-                                    data-track-note="footer-navigation"
-                                >
-                                    Feedback
                                 </a>
                             </li>
                             <li>
