@@ -256,7 +256,6 @@ export class Grapher
     @observable.ref internalNotes = ""
     @observable.ref variantName?: string = undefined
     @observable.ref originUrl = ""
-    @observable.ref isPublished?: boolean = undefined
     @observable.ref baseColorScheme?: ColorSchemeName = undefined
     @observable.ref invertColorScheme?: boolean = undefined
     @observable.ref hideLinesOutsideTolerance?: boolean = undefined
@@ -2106,9 +2105,7 @@ export class Grapher
     }
 
     @computed get baseUrl() {
-        return this.isPublished
-            ? `${this.bakedGrapherURL ?? "/grapher"}/${this.displaySlug}`
-            : undefined
+        return `${this.bakedGrapherURL ?? "/grapher"}/${this.displaySlug}`
     }
 
     @computed private get manager() {

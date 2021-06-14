@@ -153,20 +153,6 @@ export class ExplorerProgram extends GridProgram {
         return this.getLineValue(ExplorerGrammar.hideControls.keyword)
     }
 
-    get isPublished() {
-        return (
-            this.getLineValue(ExplorerGrammar.isPublished.keyword) ===
-            GridBoolean.true
-        )
-    }
-
-    setPublished(value: boolean) {
-        return this.clone.setLineValue(
-            ExplorerGrammar.isPublished.keyword,
-            value ? GridBoolean.true : GridBoolean.false
-        )
-    }
-
     get decisionMatrixCode() {
         const keywordIndex = this.getKeywordIndex(
             ExplorerGrammar.graphers.keyword

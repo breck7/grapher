@@ -65,7 +65,6 @@ export interface GrapherInterface {
     internalNotes?: string
     variantName?: string
     originUrl?: string
-    isPublished?: boolean
     baseColorScheme?: ColorSchemeName
     invertColorScheme?: boolean
     hideLinesOutsideTolerance?: boolean
@@ -150,7 +149,6 @@ export const grapherKeysToSerialize = [
     "internalNotes",
     "variantName",
     "originUrl",
-    "isPublished",
     "baseColorScheme",
     "invertColorScheme",
     "hideLinesOutsideTolerance",

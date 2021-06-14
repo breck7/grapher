@@ -91,11 +91,6 @@ export const ExplorerGrammar: Grammar = {
         description:
             "Create a Google Sheet, share it with the OWID Group, then put the link here.",
     },
-    isPublished: {
-        ...BooleanCellDef,
-        keyword: "isPublished",
-        description: "Set to true to make this Explorer public.",
-    },
     hideControls: {
         ...BooleanCellDef,
         keyword: "hideControls",

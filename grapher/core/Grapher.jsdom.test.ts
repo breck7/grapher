@@ -317,7 +317,6 @@ describe("line chart to bar chart and bar chart race", () => {
 describe("urls", () => {
     it("can change base url", () => {
         const url = new Grapher({
-            isPublished: true,
             slug: "foo",
             bakedGrapherURL: "/grapher",
         })
@@ -326,7 +325,6 @@ describe("urls", () => {
 
     it("does not include country param in url if unchanged", () => {
         const grapher = new Grapher(legacyConfig)
-        grapher.isPublished = true
         expect(grapher.canonicalUrl?.includes("country")).toBeFalsy()
     })
 

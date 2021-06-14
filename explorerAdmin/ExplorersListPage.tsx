@@ -50,7 +50,6 @@ class ExplorerRow extends React.Component<{
             lastCommit,
             filename,
             googleSheet,
-            isPublished,
             explorerTitle,
             title,
             grapherCount,
@@ -58,7 +57,6 @@ class ExplorerRow extends React.Component<{
             inlineTableCount,
         } = explorer
 
-        const publishedUrl = `${BAKED_BASE_URL}/${EXPLORERS_ROUTE_FOLDER}/${slug}`
         const repoPath = `${GIT_CMS_REPO_URL}/commits/${gitCmsBranchName}/${EXPLORERS_GIT_CMS_FOLDER}/`
         const lastCommitLink = `${GIT_CMS_REPO_URL}/commit/${lastCommit?.hash}`
 
@@ -86,14 +84,8 @@ class ExplorerRow extends React.Component<{
         return (
             <tr>
                 <td>
-                    {!isPublished ? (
-                        <span className="text-secondary">{slug}</span>
-                    ) : (
-                        <a href={publishedUrl}>{slug}</a>
-                    )}
-                    {" - "}
                     <a href={`/admin/${EXPLORERS_PREVIEW_ROUTE}/${slug}`}>
-                        Preview
+                        {slug}
                     </a>
                 </td>
                 <td>
@@ -296,22 +288,6 @@ export class ExplorersIndexPage extends React.Component<{
 
     @action.bound private resetLoadingModal() {
         this.manager.loadingIndicatorSetting = "default"
-    }
-
-    @action.bound async togglePublishedStatus(filename: string) {
-        const explorer = this.explorers.find(
-            (exp) => exp.filename === filename
-        )!
-        const newVersion = explorer.setPublished(!explorer.isPublished)
-
-        this.loadingModalOn()
-        await this.gitCmsClient.writeRemoteFile({
-            filepath: newVersion.fullPath,
-            content: newVersion.toString(),
-            commitMessage: `Setting publish status of ${filename} to ${newVersion.isPublished}`,
-        })
-        this.resetLoadingModal()
-        this.fetchAllExplorers()
     }
 
     @action.bound async deleteFile(filename: string) {

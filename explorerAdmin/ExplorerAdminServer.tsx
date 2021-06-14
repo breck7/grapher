@@ -179,8 +179,7 @@ export class ExplorerAdminServer {
     }
 
     private async getAllPublishedExplorers() {
-        const explorers = await this.getAllExplorers()
-        return explorers.filter((exp) => exp.isPublished)
+        return await this.getAllExplorers()
     }
 
     private async getAllExplorers() {
