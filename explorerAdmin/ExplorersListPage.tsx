@@ -232,14 +232,6 @@ export class ExplorersIndexPage extends React.Component<{
                         Showing {explorersToShow.length} of {numTotalRows}{" "}
                         explorers
                     </div>
-                    <div style={{ textAlign: "right" }}>
-                        <a
-                            className="btn btn-primary"
-                            href={`/admin/${EXPLORERS_ROUTE_FOLDER}/${DefaultNewExplorerSlug}`}
-                        >
-                            Create
-                        </a>
-                    </div>
                 </div>
                 <ExplorerList
                     explorers={explorersToShow}

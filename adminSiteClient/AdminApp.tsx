@@ -2,7 +2,6 @@ import * as React from "react"
 import { Admin } from "./Admin"
 import { action } from "mobx"
 import { observer } from "mobx-react"
-import { ImportPage } from "./ImportPage"
 import { NotFoundPage } from "./NotFoundPage"
 import {
     BrowserRouter as Router,
