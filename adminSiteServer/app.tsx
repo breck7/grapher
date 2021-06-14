@@ -11,7 +11,6 @@ import {
     ENV,
     SLACK_ERRORS_WEBHOOK_URL,
 } from "../settings/serverSettings"
-import { log } from "../baker/slackLog"
 import { IndexPage } from "./IndexPage"
 import { adminRouter } from "./adminRouter"
 import { renderToHtmlPage } from "./serverUtil"

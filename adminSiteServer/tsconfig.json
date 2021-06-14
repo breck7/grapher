@@ -12,7 +12,6 @@
         { "path": "../adminSiteClient" },
         { "path": "../grapher" },
         { "path": "../clientUtils" },
-        { "path": "../settings" },
-        { "path": "../baker" }
+        { "path": "../settings" }
     ]
 }
