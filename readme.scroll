@@ -1,0 +1,16 @@
+title Grapher
+
+image screenshot.png
+
+paragraph
+ This is a hacky fork of the Our World in Data (OWID) owid-grapher🔗github.com/owid/owid-grapher project. It provides the ability to make charts without requiring Wordpress, MySQL, or Docker.
+
+title3 How to install and run
+
+code
+ git clone https://github.com/breck7/grapher
+ cd grapher
+ yarn install
+ yarn startWebpackServer
+ yarn startAdminServer
+ 
