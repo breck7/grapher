@@ -33,6 +33,8 @@ export class Header extends React.Component<{
     }
 
     @computed get logo() {
+        // todo: restor functionality
+        return undefined
         const { manager } = this
         if (manager.hideLogo) return undefined
 
