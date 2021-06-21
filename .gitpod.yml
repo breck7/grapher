@@ -1,0 +1,17 @@
+image:
+    file: .gitpod.Dockerfile
+
+ports:
+    - port: 3030
+      onOpen: open-preview
+    - port: 8090
+      onOpen: ignore
+
+tasks:
+    - init: >
+          yarn install &&
+          tsc -b -verbose
+    - openMode: split-right
+      command: yarn startAdminServer
+    - openMode: split-right
+      command: yarn startWebpackServer
