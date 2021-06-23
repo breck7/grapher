@@ -16,6 +16,7 @@ import {
     GIT_CMS_BASE_ROUTE,
     GIT_CMS_DEFAULT_BRANCH,
     GIT_CMS_REPO_URL,
+    GIT_CMS_DIR,
 } from "../gitCms/GitCmsConstants"
 import moment from "moment"
 import {
@@ -207,7 +208,7 @@ export class ExplorersIndexPage extends React.Component<{
         if (!this.isReady)
             return <LoadingIndicator title="Loading explorer list" />
 
-        const { explorersToShow, numTotalRows } = this
+        const { explorersToShow, numTotalRows, gitCmsBranchName } = this
 
         const highlight = (text: string) => {
             if (this.highlightSearch) {
@@ -230,7 +231,7 @@ export class ExplorersIndexPage extends React.Component<{
                 <div className="ExplorersListPageHeader">
                     <div>
                         Showing {explorersToShow.length} of {numTotalRows}{" "}
-                        explorers
+                        explorers in {GIT_CMS_DIR}
                     </div>
                 </div>
                 <ExplorerList
